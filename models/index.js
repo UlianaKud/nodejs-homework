@@ -1,1 +1,1 @@
-export {default as contactsService} from './contacts.js'
+export {default as Contact} from "./contact.js";
