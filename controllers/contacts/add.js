@@ -1,7 +1,5 @@
 import { Contact } from "../../models/index.js";
 
-
-
 const add = async (req, res) => {
   const { _id: owner } = req.user;
   const result = await Contact.create({ ...req.body, owner });
@@ -9,4 +7,3 @@ const add = async (req, res) => {
 };
 
 export default add;
-
