@@ -2,7 +2,7 @@ import express from "express";
 import { validateBody } from "../../decorators/index.js";
 import { usersSchemas } from "../../schemas/index.js";
 import { usersController } from "../../controllers/index.js";
-import { authenticate } from "../../middlewares/index.js";
+import { authenticate, upload } from "../../middlewares/index.js";
 
 const usersRouter = express.Router();
 
@@ -18,5 +18,12 @@ usersRouter.post(
 );
 usersRouter.get("/current", authenticate, usersController.getCurrent);
 usersRouter.post("/logout", authenticate, usersController.logOut);
+
+usersRouter.patch(
+  "/avatars",
+  upload.single("avatar"),
+  authenticate,
+  usersController.updateAvatar
+);
 
 export default usersRouter;

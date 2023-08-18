@@ -6,7 +6,7 @@ const updateStatusContact = async (req, res) => {
   const { favotite } = req.body;
   const result = await Contact.findByIdAndUpdate(contactId, req.body, {
     favotite,
-  });
+  }, { new: true });
   if (!result) {
     throw HttpError(404, "Not found");
   }
