@@ -23,12 +23,19 @@ const userSchema = new Schema({
     type: String,
     default: null,
   },
+
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String
+  },
 });
 
-userSchema.pre("findOneAndUpdate", handleUpdateValidate)
+userSchema.pre("findOneAndUpdate", handleUpdateValidate);
 userSchema.post("save", handleSaveError);
 userSchema.post("findOneAndUpdate", handleSaveError);
-
 
 const User = model("user", userSchema);
 
