@@ -6,6 +6,11 @@ const userSingUp = Joi.object({
   subscription: Joi.string(),
 });
 
+const userEmail = Joi.object({
+  email: Joi.string().email().required(),
+});
+
 export default {
   userSingUp,
+  userEmail
 };
